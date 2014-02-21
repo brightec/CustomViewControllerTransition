@@ -115,6 +115,7 @@ const CGFloat PresentedViewHeightLandscape = 440.0f;
     if (self.presenting) {
         // set starting rect for animation
         toViewController.view.frame = [self rectForDismissedState:transitionContext];
+        toViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [containerView addSubview:toViewController.view];
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
