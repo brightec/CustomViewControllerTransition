@@ -12,6 +12,8 @@
 
 
 @interface BTViewController ()
+
+@property (strong, nonatomic) BTSlideInteractor *interactor;
 @end
 
 
@@ -32,12 +34,12 @@
 
 - (IBAction)showModalButtonWasTouched:(id)sender
 {
-    BTSlideInteractor *interactor = [[BTSlideInteractor alloc] init];
-    interactor.presenting = YES;
+    self.interactor = [[BTSlideInteractor alloc] init];
+    self.interactor.presenting = YES;
     
     BTModalViewController *modalController = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewController"];
     modalController.modalPresentationStyle = UIModalPresentationCustom;
-    modalController.transitioningDelegate = interactor;
+    modalController.transitioningDelegate = self.interactor;
     [self presentViewController:modalController animated:YES completion:nil];
 }
 
